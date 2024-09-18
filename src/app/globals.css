@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@media print {
+  .no-print {
+      display: none;
+  }
+  .print-content {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+  }
+  .print-content h2 {
+      margin: 0;
+  }
+  .print-content p {
+      margin: 5px 0;
+  }
+  .print-content .divider {
+      margin: 10px 0;
+      border-top: 1px solid #000;
+  }
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
