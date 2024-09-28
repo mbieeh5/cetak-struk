@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 
 
-export default function Example() {
+export default function InputForm() {
   
   const [nominal, setNominal] = useState<number>(10000);
     const [bank, setBank] = useState<string>('');
@@ -11,6 +11,7 @@ export default function Example() {
     const [admin, setAdmin] = useState<number>(0);
     const [totalByr, setTotalByr] = useState<number>(0);
     const [tanggal, setTanggal] = useState<string>("")
+    const [lokasi, setLokasi] = useState<string>('Cikaret');
     const router = useRouter();
 
     const formatDate = (date: Date): string => {
@@ -62,6 +63,7 @@ export default function Example() {
   
       const formData = new FormData(e.currentTarget);
       const bank = formData.get('bank') as string;
+      const lokasi = formData.get('lokasi') as string;
       const norek = formData.get('norek') as string;
       const penerima = formData.get('penerima') as string;
       const pengirim = formData.get('pengirim') as string || "RAFI ANGGORO";
@@ -74,6 +76,7 @@ export default function Example() {
   
       const dataStruk = {
           tanggal: tanggal.toString(),
+          lokasi,
           bank,
           norek,
           penerima,
@@ -112,6 +115,20 @@ export default function Example() {
       <div className="border-t border-gray-300 my-4"></div>
       <form action="#" method="POST" className="mx-auto mt-7 max-w-xl" onSubmit={handleOnSubmit}>
         <div className="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
+          <div className='sm:col-span2'>
+          <label htmlFor="lokasi" className="block text-sm font-semibold leading-6 text-gray-900">
+              Lokasi
+            </label>
+              <select 
+              id='lokasi'
+              name='lokasi'
+              value={lokasi}
+              onChange={(e) => {setLokasi(e.target.value)}}
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <option>Cikaret</option>
+                <option>Sukahati</option>
+              </select>
+          </div>
           <div className='sm:col-span-2'>
             <label htmlFor="bank" className="block text-sm font-semibold leading-6 text-gray-900">
               Bank
