@@ -66,7 +66,6 @@ export default function InputForm() {
       const lokasi = formData.get('lokasi') as string;
       const norek = formData.get('norek') as string;
       const penerima = formData.get('penerima') as string;
-      const pengirim = formData.get('pengirim') as string || "RAFI ANGGORO";
       const berita = formData.get('berita') as string || "GloryCell";
       const nominal = formData.get('nominal') as string;
       const nominalConverter = parseInt(nominal).toLocaleString('id-ID');
@@ -80,7 +79,7 @@ export default function InputForm() {
           bank,
           norek,
           penerima,
-          pengirim,
+          pengirim : "RAFI ANGGORO",
           berita,
           nominal: nominalConverter,
           admin: adminConverter,
@@ -103,16 +102,6 @@ export default function InputForm() {
   
   return (
     <div className="isolate bg-white px-12 py-5 rounded">
-      <div>
-      </div>
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Glory Cell</h2>
-        <h2 className="mt-2 text-2xl font-italic tracking-tight text-gray-900 sm:text-1xl">Transfer Antar Bank</h2>
-        <p className="mt-2 text-m leading-8 text-gray-600">
-          {tanggal}
-        </p>
-      </div>
-      <div className="border-t border-gray-300 my-4"></div>
       <form action="#" method="POST" className="mx-auto mt-7 max-w-xl" onSubmit={handleOnSubmit}>
         <div className="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
           <div className='sm:col-span2'>
@@ -175,20 +164,6 @@ export default function InputForm() {
                 value={penerima.toLocaleUpperCase()}
                 onChange={(e) => {setPenerima(e.target.value)}}
                 required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="pengirim" className="block text-sm font-semibold leading-6 text-gray-900">
-              Nama Pengirim
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="pengirim"
-                name="pengirim"
-                value={'RAFI ANGGORO'}
-                readOnly
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>

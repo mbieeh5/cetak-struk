@@ -44,7 +44,7 @@ export default function CetakStruk() {
                     <head>
                         <title>Print</title>
                         <style>
-                            ${styleSheets} /* Menyertakan semua CSS */
+                            ${styleSheets}
                         </style>
                     </head>
                     <body>
@@ -117,57 +117,78 @@ export default function CetakStruk() {
                         </>
                         }
                         <h2 className="mt-2 text-s font-italic tracking-tight text-gray-900 sm:text-1xl border-b border-gray-300">Transfer Antar Bank</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-1">
-                            <div className="flex justify-between text-gray-700 font-medium text-sm">
-                                <span>Bank:</span>
-                                <span className="font-normal">{a.bank}</span>
-                            </div>
-                            <div className="flex justify-between text-gray-700 font-medium text-sm">
-                                <span>NoRek:</span>
-                                <span className="font-bold text-gray-900">{a.norek}</span>
-                            </div>
-                            <div className="flex justify-between text-gray-700 font-medium text-sm">
-                                <span>Nama:</span>
-                                <span className="font-bold text-gray-900 break-words text-right max-w-[60%]">{a.penerima}</span>
-                            </div>
-                            <div className="flex justify-between text-gray-700 font-medium text-sm">
-                                <span>Pengirim:</span>
-                                <span className="font-normal">{a.pengirim}</span>
-                            </div>
-                            <div className="flex justify-between text-gray-700 font-medium text-sm">
-                                <span>Berita:</span>
-                                <span className="font-normal">{a.berita}</span>
-                            </div>
-                            <div className="flex justify-between border-b border-gray-300 py-2 text-sm">
-                                <span>Nominal:</span>
-                                <span className="font-bold text-gray-900">Rp. {a.nominal}.-</span>
-                            </div>
-                            <div className="flex justify-between text-gray-700 font-medium text-sm ">
-                                <span className="font-normal text-center ">Struk ini sebagai bukti pembayaran yang sah mohon disimpan.</span>
-                            </div>
-
-                            <div className="flex justify-between text-gray-700 font-medium text-sm ">
-                                <span>Admin:</span>
-                                <span className="font-normal">
-                                <span className="font-normal">Rp. {a.admin}.-</span>
-                                </span>
-                            </div>
-                            <div className="flex justify-between text-gray-700 font-medium text-sm ">
-                                <span>Total Bayar:</span>
-                                <span className="font-normal">Rp. {a.totalbyr.toLocaleString('id-ID')}.-</span>
-                            </div>
-                            <br/>
-                            <div className="flex flex-col text-center text-gray-700 font-medium ">
-                                <div>
-                                <span className="font-normal text-center ">TERIMA KASIH</span>
-                                </div>
-                                <div>
-                                    {a.lokasi === "Cikaret" ? <span className="font-normal text-center ">CS-WA: 08811429638</span> : <span className="font-normal text-center ">CS-WA: 08973997575</span>}
-                                </div>
-                            </div>
-                            <br/>
-                            <br/>
+                        <div className="grid grid-cols-1 sm:grid-cols-1 gap-1">
+                        {/* Bank Information */}
+                        <div className="flex items-center text-gray-700 font-medium text-sm">
+                            <span className="w-[35%]">Bank</span>
+                            <div className="font-bold mr-1">:</div>
+                            <span className="font-bold text-gray-900 break-words">{a.bank}</span>
                         </div>
+
+                        {/* NoRek */}
+                        <div className="flex items-center text-gray-700 font-medium text-sm">
+                            <span className="w-[35%]">NoRek</span>
+                            <div className="font-bold mr-1">:</div>
+                            <span className="font-bold text-gray-900 break-words">{a.norek}</span>
+                        </div>
+
+                        {/* Nama Penerima */}
+                        <div className="flex items-start text-gray-700 font-medium text-sm">
+                            <span className="w-[35%]">Nama</span>
+                            <div className="font-bold mr-1">:</div>
+                            <div className="font-bold text-gray-900 break-normal w-full max-w-32">{a.penerima}</div>
+                        </div>
+
+                        {/* Nama Pengirim */}
+                        <div className="flex items-start text-gray-700 font-medium text-sm">
+                            <span className="w-[35%]">Pengirim</span>
+                            <div className="font-bold mr-1">:</div>
+                            <span className="font-bold text-gray-900 break-words">{a.pengirim}</span>
+                        </div>
+
+                        {/* Berita */}
+                        <div className="flex items-start text-gray-700 font-medium text-sm">
+                            <span className="w-[35%]">Berita</span>
+                            <div className="font-bold mr-1">:</div>
+                            <span className="font-bold text-gray-900 break-words">{a.berita}</span>
+                        </div>
+
+                        {/* Nominal */}
+                        <div className="flex items-center border-b border-gray-300 py-1 text-sm">
+                            <span className="w-[35%]">Nominal</span>
+                            <div className="font-bold mr-1">:</div>
+                            <span className="font-bold text-gray-900">Rp. {a.nominal}.-</span>
+                        </div>
+
+                        {/* Struk Confirmation */}
+                        <div className="flex text-gray-700 font-medium text-sm">
+                            <span className="font-normal text-center">
+                            Struk ini sebagai bukti pembayaran yang sah mohon disimpan.
+                            </span>
+                        </div>
+
+                        {/* Admin Fee */}
+                        <div className="flex items-center text-gray-700 font-medium text-sm">
+                            <span className="w-[35%]">Admin</span>
+                            <div className="font-bold mr-1">:</div>
+                            <span className="font-bold">Rp. {a.admin}.-</span>
+                        </div>
+
+                        {/* Total Bayar */}
+                        <div className="flex items-center text-gray-700 font-medium text-sm">
+                            <span className="w-[35%]">Total Bayar</span>
+                            <div className="font-bold mr-1">:</div>
+                            <span className="font-bold">Rp. {a.totalbyr.toLocaleString('id-ID')}.-</span>
+                        </div>
+
+                        {/* Thank You Message */}
+                        <div className="flex flex-col text-center text-gray-700 font-medium">
+                            <span className="font-normal">TERIMA KASIH</span>
+                            <span className="font-normal">
+                            {a.lokasi === "Cikaret" ? "CS-WA: 08811429638" : "CS-WA: 08973997575"}
+                            </span>
+                        </div>
+                    </div>
                     </div>
                 ))
             ) : (
