@@ -99,25 +99,25 @@ export default function CetakStruk() {
                             <p className=" text-xs text-gray-600">
                                 CIBINONG - BOGOR
                             </p>
-                            <p className=" text-xs leading-1 text-gray-600">
+                            <p className=" text-xs leading-1 text-gray-600 border-b border-gray-900">
                                 {a.tanggal}
                             </p>
                         </>
                         : <>
-                            <p className="text-l font-bold tracking-tight text-gray-900 sm:text-l">Glory Cell</p>
+                            <p className="text-l font-bold tracking-tight text-gray-900 sm:text-l ">Glory Cell</p>
                             <p className=" text-xs leading-3 text-gray-600">
                                 JLN. RAYA SUKAHATI NO 01
                             </p>
                             <p className=" text-xs text-gray-600">
                                 CIBINONG - BOGOR
                             </p>
-                            <p className=" text-xs leading-1 text-gray-600">
+                            <p className=" text-xs leading-1 text-gray-600 border-b border-gray-600">
                                 {a.tanggal}
                             </p>
                         </>
                         }
-                        <h2 className="mt-2 text-s font-italic tracking-tight text-gray-900 sm:text-1xl border-b border-gray-300">Transfer Antar Bank</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-1 gap-1">
+                        <h2 className="mt-0 text-s font-italic tracking-tight text-gray-900 sm:text-1xl">Transfer Antar Bank</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-1 gap-0">
                         {/* Bank Information */}
                         <div className="flex items-center text-gray-700 font-medium text-sm">
                             <span className="w-[35%]">Bank</span>
@@ -154,28 +154,28 @@ export default function CetakStruk() {
                         </div>
 
                         {/* Nominal */}
-                        <div className="flex items-center border-b border-gray-300 py-1 text-sm">
+                        <div className="flex items-center border-b border-gray-900 py-1 text-sm">
                             <span className="w-[35%]">Nominal</span>
                             <div className="font-bold mr-1">:</div>
                             <span className="font-bold text-gray-900">Rp. {a.nominal}.-</span>
                         </div>
 
                         {/* Struk Confirmation */}
-                        <div className="flex text-gray-700 font-medium text-sm">
+                        <div className="flex text-gray-700 font-medium text-[12px]">
                             <span className="font-normal text-center">
                             Struk ini sebagai bukti pembayaran yang sah mohon disimpan.
                             </span>
                         </div>
 
                         {/* Admin Fee */}
-                        <div className="flex items-center text-gray-700 font-medium text-sm">
+                        <div className="flex items-center text-gray-700 font-medium text-[12px]">
                             <span className="w-[35%]">Admin</span>
                             <div className="font-bold mr-1">:</div>
                             <span className="font-bold">Rp. {a.admin}.-</span>
                         </div>
 
                         {/* Total Bayar */}
-                        <div className="flex items-center text-gray-700 font-medium text-sm">
+                        <div className="flex items-center text-gray-700 font-medium text-[12px]">
                             <span className="w-[35%]">Total Bayar</span>
                             <div className="font-bold mr-1">:</div>
                             <span className="font-bold">Rp. {a.totalbyr.toLocaleString('id-ID')}.-</span>
