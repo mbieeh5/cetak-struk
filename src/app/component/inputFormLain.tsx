@@ -66,9 +66,9 @@ export default function InputForm() {
 }, [calculation, nominal]);
   
   return (
-    <div className="isolate bg-white px-12 py-5 rounded">
+    <div>
       <form action="#" method="POST" className="mx-auto mt-7 max-w-xl" onSubmit={handleOnSubmit}>
-        <div className="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2">
           <div className='sm:col-span-2'>
             <label htmlFor="Nomor Tujuan" className="block text-sm font-semibold leading-6 text-gray-900">
              Nomor Tujuan

@@ -7,11 +7,11 @@ export default function Home() {
   const [activeComponent, setActiveComponent] = useState<'transfer' | 'lain'>('transfer');
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 pt-10">
-      <div className="flex gap-4 mb-8">
+    <div className="flex flex-col items-center justify-center bg-gray-100 pt-1">
+      <div className="flex gap-4 mb-3">
         <button
           onClick={() => setActiveComponent('transfer')}
-          className={`px-6 py-3 rounded-md font-semibold text-white ${
+          className={`px-1 py-1 rounded-md font-semibold text-white text-xs ${
             activeComponent === 'transfer' ? 'bg-indigo-600' : 'bg-gray-400'
           } hover:bg-indigo-500 transition`}
         >
@@ -20,7 +20,7 @@ export default function Home() {
 
         <button
           onClick={() => setActiveComponent('lain')}
-          className={`px-6 py-3 rounded-md font-semibold text-white ${
+          className={`px-1 py-1 rounded-md font-semibold text-white text-xs ${
             activeComponent === 'lain' ? 'bg-indigo-600' : 'bg-gray-400'
           } hover:bg-indigo-500 transition`}
         >

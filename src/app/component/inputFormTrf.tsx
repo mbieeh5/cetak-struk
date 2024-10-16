@@ -101,11 +101,11 @@ export default function InputForm() {
 }, [calculation, nominal]);
   
   return (
-    <div className="isolate bg-white px-12 py-5 rounded">
-      <form action="#" method="POST" className="mx-auto mt-7 max-w-xl" onSubmit={handleOnSubmit}>
+    <div>
+      <form action="#" method="POST" className="mx-automax-w-m" onSubmit={handleOnSubmit}>
         <div className="grid grid-cols-1 gap-x-2 gap-y-1 sm:grid-cols-1">
           <div className='sm:col-span2'>
-          <label htmlFor="lokasi" className="block text-sm font-semibold leading-6 text-gray-900">
+          <label htmlFor="lokasi" className="block text-sm font-semibold leading-1 text-gray-900">
               Lokasi
             </label>
               <select 
@@ -113,16 +113,15 @@ export default function InputForm() {
               name='lokasi'
               value={lokasi}
               onChange={(e) => {setLokasi(e.target.value)}}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 <option>Cikaret</option>
                 <option>Sukahati</option>
               </select>
           </div>
           <div className='sm:col-span-2'>
-            <label htmlFor="bank" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="bank" className="block text-sm font-semibold leading-1 text-gray-900">
               Bank
             </label>
-            <div className="mt-2.5">
               <input
                 id="bank"
                 name="bank"
@@ -131,15 +130,14 @@ export default function InputForm() {
                 value={bank.toLocaleUpperCase()}
                 onChange={(e) => {setBank(e.target.value)}}
                 required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
-            </div>
           </div>
           <div className='sm:col-span-2'>
-            <label htmlFor="norek" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="norek" className="block text-sm font-semibold text-gray-900">
               Nomor Rekening
             </label>
-            <div className="mt-2.5">
+            <div>
               <input
                 id="norek"
                 name="norek"
@@ -148,7 +146,7 @@ export default function InputForm() {
                 defaultValue={''}
                 autoComplete="norek"
                 required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -156,7 +154,7 @@ export default function InputForm() {
             <label htmlFor="penerima" className="block text-sm font-semibold leading-6 text-gray-900">
               Nama Penerima
             </label>
-            <div className="mt-2.5">
+            <div>
               <input
                 id="penerima"
                 name="penerima"
@@ -165,7 +163,7 @@ export default function InputForm() {
                 value={penerima.toLocaleUpperCase()}
                 onChange={(e) => {setPenerima(e.target.value)}}
                 required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -173,7 +171,6 @@ export default function InputForm() {
             <label htmlFor="berita" className="block text-sm font-semibold leading-6 text-gray-900">
               Berita
             </label>
-            <div className="mt-2.5">
               <input
                 id="berita"
                 name="berita"
@@ -181,15 +178,13 @@ export default function InputForm() {
                 autoComplete="berita"
                 required
                 defaultValue={'GloryCell'}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
-            </div>
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="nominal" className="block text-sm font-semibold leading-6 text-gray-900">
               Nominal
             </label>
-            <div className="mt-2.5">
               <input
                 id="nominal"
                 name="nominal"
@@ -199,41 +194,36 @@ export default function InputForm() {
                 autoComplete="nominal"
                 required
                 onChange={(e) => {setNominal(parseInt(e.target.value))}}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
-            </div>
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="admin" className="block text-sm font-semibold leading-6 text-gray-900">
               Admin
             </label>
-            <div className="mt-2.5">
               <input
                 id="admin"
                 name="admin"
                 defaultValue={admin.toLocaleString('id-ID')}
                 value={admin}
                 onChange={(e) => {setAdmin(parseInt(e.target.value))}}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
-            </div>
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="totalbyr" className="block text-sm font-semibold leading-6 text-gray-900">
               Total Bayar
             </label>
-            <div className="mt-2.5">
               <input
                 id="totalbyr"
                 name="totalbyr"
                 readOnly
                 value={totalByr.toLocaleString('id-ID')}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
-            </div>
           </div>
         </div>
-        <div className="mt-10">
+        <div className="mt-1">
           <button
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -241,7 +231,7 @@ export default function InputForm() {
             Cetak
           </button>
           </div>
-          <div className="mt-10">
+          <div className="mt-1">
           <button
             type="button"
             onClick={() => {handleResetForm()}}
