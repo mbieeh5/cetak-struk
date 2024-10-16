@@ -7,7 +7,7 @@ export default function Home() {
   const [activeComponent, setActiveComponent] = useState<'transfer' | 'lain'>('transfer');
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-gray-100 mt-6">
+    <div className="flex flex-col items-center justify-center bg-gray-100 pt-10">
       <div className="flex gap-4 mb-8">
         <button
           onClick={() => setActiveComponent('transfer')}
@@ -27,9 +27,7 @@ export default function Home() {
           Struk Lain Lain
         </button>
       </div>
-
-      {/* Menampilkan komponen berdasarkan state */}
-      <div className="w-full max-w-lg">
+      <div className="w-s max-w-s h-s">
         {activeComponent === 'transfer' ? <InputForm /> : <StrukLainLain />}
       </div>
     </div>
