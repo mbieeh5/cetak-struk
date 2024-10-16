@@ -6,12 +6,9 @@ import { useRouter } from 'next/navigation';
 export default function InputForm() {
   
   const [nominal, setNominal] = useState<number>(10000);
-    const [bank, setBank] = useState<string>('');
-    const [penerima, setPenerima] = useState<string>('');
     const [admin, setAdmin] = useState<number>(0);
     const [totalByr, setTotalByr] = useState<number>(0);
     const [tanggal, setTanggal] = useState<string>("")
-    const [lokasi, setLokasi] = useState<string>('Cikaret');
     const router = useRouter();
 
     const formatDate = (date: Date): string => {
@@ -26,31 +23,6 @@ export default function InputForm() {
     };
 
     const calculation = useCallback((num: number) => {
-        if(num <= 500000){
-            setAdmin(5000);
-            setTotalByr(5000 + num);
-            return;
-        }
-        if(num <= 1000000){
-            setAdmin(10000);
-            setTotalByr(10000 + num);
-            return;
-        }
-        if(num <= 3000000){
-            setAdmin(15000);
-            setTotalByr(15000 + num);
-            return;
-        }
-        if(num <= 5000000){
-            setAdmin(20000);
-            setTotalByr(20000 + num);
-            return;
-        }
-        if(num <= 10000000){
-            setAdmin(25000);
-            setTotalByr(25000 + num);
-            return;
-        }
         setAdmin(admin);
         setTotalByr(admin + num);
         return;
@@ -62,11 +34,8 @@ export default function InputForm() {
       setTanggal(formatDate(new Date()));
   
       const formData = new FormData(e.currentTarget);
-      const bank = formData.get('bank') as string;
-      const lokasi = formData.get('lokasi') as string;
-      const norek = formData.get('norek') as string;
-      const penerima = formData.get('penerima') as string;
-      const berita = formData.get('berita') as string || "GloryCell";
+      const SN = formData.get('SN') as string;
+      const nomorTujuan = formData.get('NomorTujuan') as string;
       const nominal = formData.get('nominal') as string;
       const nominalConverter = parseInt(nominal).toLocaleString('id-ID');
       const admin = formData.get('admin') as string;
@@ -75,18 +44,14 @@ export default function InputForm() {
   
       const dataStruk = {
           tanggal: tanggal.toString(),
-          lokasi,
-          bank,
-          norek,
-          penerima,
-          pengirim : "RAFI ANGGORO",
-          berita,
+          nomorTujuan,
+          SN,
           nominal: nominalConverter,
           admin: adminConverter,
           totalbyr,
       };
-      sessionStorage.setItem('strukData', JSON.stringify(dataStruk));
-      router.push('/struk');
+      sessionStorage.setItem('strukDataLain', JSON.stringify(dataStruk));
+      router.push('/struk-lain');
     };
 
     const handleResetForm = () => {
@@ -104,82 +69,34 @@ export default function InputForm() {
     <div className="isolate bg-white px-12 py-5 rounded">
       <form action="#" method="POST" className="mx-auto mt-7 max-w-xl" onSubmit={handleOnSubmit}>
         <div className="grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
-          <div className='sm:col-span2'>
-          <label htmlFor="lokasi" className="block text-sm font-semibold leading-6 text-gray-900">
-              Lokasi
-            </label>
-              <select 
-              id='lokasi'
-              name='lokasi'
-              value={lokasi}
-              onChange={(e) => {setLokasi(e.target.value)}}
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                <option>Cikaret</option>
-                <option>Sukahati</option>
-              </select>
-          </div>
           <div className='sm:col-span-2'>
-            <label htmlFor="bank" className="block text-sm font-semibold leading-6 text-gray-900">
-              Bank
+            <label htmlFor="Nomor Tujuan" className="block text-sm font-semibold leading-6 text-gray-900">
+             Nomor Tujuan
             </label>
             <div className="mt-2.5">
               <input
-                id="bank"
-                name="bank"
+                id="NomorTujuan"
+                name="NomorTujuan"
                 type="text"
-                autoComplete="bank"
-                value={bank.toLocaleUpperCase()}
-                onChange={(e) => {setBank(e.target.value)}}
-                required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div className='sm:col-span-2'>
-            <label htmlFor="norek" className="block text-sm font-semibold leading-6 text-gray-900">
-              Nomor Rekening
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="norek"
-                name="norek"
-                type="number"
                 defaultValue={''}
-                autoComplete="norek"
+                autoComplete="phoneNumber"
                 required
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div className='sm:col-span-2'>
-            <label htmlFor="penerima" className="block text-sm font-semibold leading-6 text-gray-900">
-              Nama Penerima
+            <label htmlFor="sn" className="block text-sm font-semibold leading-6 text-gray-900">
+             SN
             </label>
             <div className="mt-2.5">
               <input
-                id="penerima"
-                name="penerima"
+                id="SN"
+                name="SN"
                 type="text"
-                autoComplete="family-name"
-                value={penerima.toLocaleUpperCase()}
-                onChange={(e) => {setPenerima(e.target.value)}}
+                defaultValue={''}
+                autoComplete="sn"
                 required
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="berita" className="block text-sm font-semibold leading-6 text-gray-900">
-              Berita
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="berita"
-                name="berita"
-                type="text"
-                autoComplete="berita"
-                required
-                defaultValue={'GloryCell'}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -192,7 +109,8 @@ export default function InputForm() {
               <input
                 id="nominal"
                 name="nominal"
-                type="number"
+                type="text"
+                pattern="[0-9]*"
                 value={nominal}
                 autoComplete="nominal"
                 required
