@@ -10,8 +10,8 @@ interface dataStruk {
     pengirim: string,
     berita: string,
     nominal: string,
-    admin: string,
-    totalbyr: number,
+    admin: number,
+    totalbyr: string,
     lokasi:string;
 }
 
@@ -171,14 +171,14 @@ export default function CetakStruk() {
                         <div className="flex items-center text-gray-700 font-medium text-[12px]">
                             <span className="w-[35%]">Admin</span>
                             <div className="font-bold mr-1">:</div>
-                            <span className="font-bold">Rp. {a.admin}.-</span>
+                            <span className="font-bold">Rp. {a.admin.toLocaleString('id-ID')}.-</span>
                         </div>
 
                         {/* Total Bayar */}
                         <div className="flex items-center text-gray-700 font-medium text-[12px]">
                             <span className="w-[35%]">Total Bayar</span>
                             <div className="font-bold mr-1">:</div>
-                            <span className="font-bold">Rp. {a.totalbyr.toLocaleString('id-ID')}.-</span>
+                            <span className="font-bold">Rp. {a.totalbyr}.-</span>
                         </div>
 
                         {/* Thank You Message */}

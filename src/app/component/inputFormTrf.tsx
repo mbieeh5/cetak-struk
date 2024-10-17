@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 export default function InputForm() {
   
-  const [nominal, setNominal] = useState<number>(10000);
+  const [nominal, setNominal] = useState<string>("10.000");
     const [bank, setBank] = useState<string>('');
     const [penerima, setPenerima] = useState<string>('');
     const [admin, setAdmin] = useState<number>(0);
@@ -24,6 +24,12 @@ export default function InputForm() {
         
         return `${day}/${month}/${year}@${hours}:${minutes}:${seconds}`;
     };
+
+    const handleNominalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const rawValue = e.target.value.replace(/\./g, '');
+      const formattedValue = parseInt(rawValue || "0").toLocaleString('id-ID');
+      setNominal(formattedValue)
+    }
 
     const calculation = useCallback((num: number) => {
         if(num <= 500000){
@@ -67,10 +73,6 @@ export default function InputForm() {
       const norek = formData.get('norek') as string;
       const penerima = formData.get('penerima') as string;
       const berita = formData.get('berita') as string || "GloryCell";
-      const nominal = formData.get('nominal') as string;
-      const nominalConverter = parseInt(nominal).toLocaleString('id-ID');
-      const admin = formData.get('admin') as string;
-      const adminConverter = parseInt(admin).toLocaleString('id-ID');
       const totalbyr = formData.get('totalbyr') as string;
   
       const dataStruk = {
@@ -81,10 +83,11 @@ export default function InputForm() {
           penerima,
           pengirim : "RAFI ANGGORO",
           berita,
-          nominal: nominalConverter,
-          admin: adminConverter,
+          nominal,
+          admin,
           totalbyr,
       };
+      console.log(dataStruk)
       sessionStorage.setItem('strukData', JSON.stringify(dataStruk));
       router.push('/struk-transfer');
     };
@@ -97,7 +100,8 @@ export default function InputForm() {
     
     const dateNow:Date = new Date();
     setTanggal(formatDate(dateNow));
-    calculation(nominal)
+    const cleanedNominal = parseInt(nominal.replace(/\./g, '') || '0'); // Bersihkan titik dan default ke '0'
+    calculation(cleanedNominal);
 }, [calculation, nominal]);
   
   return (
@@ -189,11 +193,10 @@ export default function InputForm() {
                 id="nominal"
                 name="nominal"
                 type="text"
-                pattern="[0-9]*"
                 value={nominal}
                 autoComplete="nominal"
                 required
-                onChange={(e) => {setNominal(parseInt(e.target.value))}}
+                onChange={handleNominalChange}
                 className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
           </div>
@@ -205,7 +208,7 @@ export default function InputForm() {
                 id="admin"
                 name="admin"
                 defaultValue={admin.toLocaleString('id-ID')}
-                value={admin}
+                value={admin.toLocaleString('id-ID')}
                 onChange={(e) => {setAdmin(parseInt(e.target.value))}}
                 className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
