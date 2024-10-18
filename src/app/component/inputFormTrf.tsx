@@ -8,7 +8,7 @@ export default function InputForm() {
   const [nominal, setNominal] = useState<string>("10.000");
     const [bank, setBank] = useState<string>('');
     const [penerima, setPenerima] = useState<string>('');
-    const [admin, setAdmin] = useState<number>(0);
+    const [admin, setAdmin] = useState<string>('0');
     const [totalByr, setTotalByr] = useState<number>(0);
     const [tanggal, setTanggal] = useState<string>("")
     const [lokasi, setLokasi] = useState<string>('Cikaret');
@@ -33,32 +33,34 @@ export default function InputForm() {
 
     const calculation = useCallback((num: number) => {
         if(num <= 500000){
-            setAdmin(5000);
+            setAdmin('5.000');
             setTotalByr(5000 + num);
             return;
         }
         if(num <= 1000000){
-            setAdmin(10000);
+            setAdmin('10.000');
             setTotalByr(10000 + num);
             return;
         }
         if(num <= 3000000){
-            setAdmin(15000);
+            setAdmin('15.000');
             setTotalByr(15000 + num);
             return;
         }
         if(num <= 5000000){
-            setAdmin(20000);
+            setAdmin('20.000');
             setTotalByr(20000 + num);
             return;
         }
         if(num <= 10000000){
-            setAdmin(25000);
+            setAdmin('25.000');
             setTotalByr(25000 + num);
             return;
         }
-        setAdmin(admin);
-        setTotalByr(admin + num);
+        const cleanAdmin = admin.replace(/\./g, '');
+        const formattedAdmin = parseInt(cleanAdmin || '0').toLocaleString('id-ID')
+        setAdmin(formattedAdmin);
+        setTotalByr(parseInt(cleanAdmin) + num);
         return;
     },[admin])
 
@@ -207,9 +209,8 @@ export default function InputForm() {
               <input
                 id="admin"
                 name="admin"
-                defaultValue={admin.toLocaleString('id-ID')}
-                value={admin.toLocaleString('id-ID')}
-                onChange={(e) => {setAdmin(parseInt(e.target.value))}}
+                value={admin}
+                onChange={(e) => {setAdmin(e.target.value)}}
                 className="block w-full h-8 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
           </div>
